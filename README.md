@@ -1,4 +1,3 @@
-# number-increaser
 # Pygame Number Increaser
 
 A simple Python application using **Pygame** that displays a number increasing by one every second.
