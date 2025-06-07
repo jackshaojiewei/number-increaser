@@ -1,10 +1,12 @@
 # Pygame Number Increaser
 
-A simple Python application using **Pygame** that displays a number increasing by one every second.
+A Python application using **Pygame** that has a number that goes up every second.
 
-## Preview
+## Features
 
-The app opens a window showing a number in the center. Every second, the number increases by 1.
+- A number that increases by one every second
+- A like button that increases the number increasion speed
+- The ability to create an account to like a post
 
 ## Requirements
 
@@ -25,3 +27,7 @@ venv\Scripts\activate  # On Windows
 
 # Install Pygame
 pip install pygame
+```
+## Potential future features
+- Automated systems to create accounts for you
+- Achievements
