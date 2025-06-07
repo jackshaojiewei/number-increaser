@@ -12,8 +12,8 @@ BLACK = (0, 0, 0)
 BLUE = (70, 130, 180)
 GREEN = (34, 139, 34)
 RED = (220, 20, 60)
-LIGHT_GRAY = (240, 240, 240)
-DARK_GRAY = (128, 128, 128)
+LIGHT_GREY = (240, 240, 240)
+DARK_GREY = (128, 128, 128)
 GOLD = (255, 215, 0)
 ORANGE = (255, 165, 0)
 
@@ -78,7 +78,7 @@ class SignUpEveryLikeGame:
             self.increment_rate += 0.2  # Each like increases rate by 0.2
             self.like_animation = 25
 
-            # Sign out immediately after liking!
+            # Sign out immediately after liking
             self.is_signed_up = False
 
             # Add floating text
@@ -202,17 +202,16 @@ class SignUpEveryLikeGame:
     def draw_stats_panel(self):
         """Draw the statistics panel"""
         panel_rect = pygame.Rect(50, 550, SCREEN_WIDTH-100, 120)
-        pygame.draw.rect(self.screen, LIGHT_GRAY, panel_rect)
-        pygame.draw.rect(self.screen, BLACK, panel_rect, 2)
+        pygame.draw.rect(self.screen, DARK_GREY, panel_rect)
+        pygame.draw.rect(self.screen, WHITE, panel_rect, 2)
 
         # Stats title
-        stats_title = self.font_medium.render("STATISTICS", True, BLACK)
+        stats_title = self.font_medium.render("STATISTICS", True, WHITE)
         self.screen.blit(stats_title, (60, 560))
 
         # Stats content
         stats = [
-            f"Total Likes: {self.total_likes}",
-            f"Total Sign-ups: {self.total_signups}",
+            f"Likes: {self.total_likes}",
             f"Current Rate: +{self.increment_rate:.1f}/sec",
             f"Accounts Created: {len(self.account_names)}"
         ]
@@ -220,7 +219,7 @@ class SignUpEveryLikeGame:
         for i, stat in enumerate(stats):
             x = 60 + (i % 2) * 300
             y = 590 + (i // 2) * 25
-            stat_text = self.font_small.render(stat, True, BLACK)
+            stat_text = self.font_small.render(stat, True, WHITE)
             self.screen.blit(stat_text, (x, y))
 
         # Current account status
@@ -234,38 +233,38 @@ class SignUpEveryLikeGame:
 
     def draw(self):
         """Draw everything"""
-        self.screen.fill(WHITE)
+        self.screen.fill(BLACK)
 
         # Title
-        title_text = self.font_title.render("SIGN UP TO LIKE", True, BLACK)
+        title_text = self.font_title.render("BIG NUMBER MAKE BRAIN HAPPY", True, WHITE)
         title_rect = title_text.get_rect(center=(SCREEN_WIDTH//2, 50))
         self.screen.blit(title_text, title_rect)
 
-        subtitle_text = self.font_small.render("(Every Single Time!)", True, DARK_GRAY)
+        subtitle_text = self.font_small.render("BIG LIKES MAKES NUMBER INCREASOR HAPPY", True, LIGHT_GREY)
         subtitle_rect = subtitle_text.get_rect(center=(SCREEN_WIDTH//2, 80))
         self.screen.blit(subtitle_text, subtitle_rect)
 
-        # Current number (big and prominent)
-        number_color = GREEN if self.increment_rate > 2 else (BLUE if self.increment_rate > 1.5 else BLACK)
-        number_text = self.font_large.render(f"Number: {int(self.number)}", True, number_color)
+        # Current number
+        number_color = GREEN if self.increment_rate > 2 else (BLUE if self.increment_rate > 1.5 else WHITE)
+        number_text = self.font_large.render(f"{int(self.number)}", True, number_color)
         number_rect = number_text.get_rect(center=(SCREEN_WIDTH//2, 140))
         self.screen.blit(number_text, number_rect)
 
         # Rate display
-        rate_text = self.font_medium.render(f"Growing at +{self.increment_rate:.1f} per second", 
-                                          True, DARK_GRAY)
+        rate_text = self.font_medium.render(f"Motivation: {self.increment_rate:.1f}", 
+                                          True, LIGHT_GREY)
         rate_rect = rate_text.get_rect(center=(SCREEN_WIDTH//2, 180))
         self.screen.blit(rate_text, rate_rect)
 
         # Progress indicator
-        progress_text = self.font_small.render("Like and subscribe pls", True, BLACK)
+        progress_text = self.font_small.render("like and subscribe plsplsplsplspls", True, WHITE)
         progress_rect = progress_text.get_rect(center=(SCREEN_WIDTH//2, 220))
         self.screen.blit(progress_text, progress_rect)
 
         # Main interaction area
         if not self.is_signed_up:
             # Sign up section
-            instruction_text = self.font_medium.render("Create an account to like!", True, BLACK)
+            instruction_text = self.font_medium.render("Create an account to like!", True, WHITE)
             instruction_rect = instruction_text.get_rect(center=(SCREEN_WIDTH//2, 280))
             self.screen.blit(instruction_text, instruction_rect)
 
@@ -283,21 +282,21 @@ class SignUpEveryLikeGame:
                 button_color = (50, 100, 150)
 
             pygame.draw.rect(self.screen, button_color, signup_button_animated, border_radius=8)
-            pygame.draw.rect(self.screen, BLACK, signup_button_animated, 2, border_radius=8)
+            pygame.draw.rect(self.screen, WHITE, signup_button_animated, 2, border_radius=8)
 
             signup_text = self.font_medium.render("CREATE ACCOUNT", True, WHITE)
             signup_rect = signup_text.get_rect(center=signup_button_animated.center)
             self.screen.blit(signup_text, signup_rect)
 
             # Like button (disabled)
-            pygame.draw.rect(self.screen, LIGHT_GRAY, self.like_button, border_radius=8)
-            pygame.draw.rect(self.screen, DARK_GRAY, self.like_button, 2, border_radius=8)
+            pygame.draw.rect(self.screen, DARK_GREY, self.like_button, border_radius=8)
+            pygame.draw.rect(self.screen, LIGHT_GREY, self.like_button, 2, border_radius=8)
 
-            disabled_text = self.font_medium.render("LIKE", True, DARK_GRAY)
+            disabled_text = self.font_medium.render("LIKE", True, LIGHT_GREY)
             disabled_rect = disabled_text.get_rect(center=self.like_button.center)
             self.screen.blit(disabled_text, disabled_rect)
 
-            step_text = self.font_small.render("like plssssss", True, DARK_GRAY)
+            step_text = self.font_small.render("like plssssss", True, LIGHT_GREY)
             step_rect = step_text.get_rect(center=(SCREEN_WIDTH//2, 520))
             self.screen.blit(step_text, step_rect)
 
@@ -307,14 +306,14 @@ class SignUpEveryLikeGame:
             instruction_rect = instruction_text.get_rect(center=(SCREEN_WIDTH//2, 280))
             self.screen.blit(instruction_text, instruction_rect)
 
-            step_text = self.font_medium.render("like plssssss", True, BLACK)
+            step_text = self.font_medium.render("like plssssss", True, WHITE)
             step_rect = step_text.get_rect(center=(SCREEN_WIDTH//2, 320))
             self.screen.blit(step_text, step_rect)
 
             # Sign up button (disabled)
-            pygame.draw.rect(self.screen, LIGHT_GRAY, self.signup_button, border_radius=8)
-            pygame.draw.rect(self.screen, DARK_GRAY, self.signup_button, 2, border_radius=8)
-            disabled_signup_text = self.font_medium.render("SIGNED UP", True, DARK_GRAY)
+            pygame.draw.rect(self.screen, DARK_GREY, self.signup_button, border_radius=8)
+            pygame.draw.rect(self.screen, LIGHT_GREY, self.signup_button, 2, border_radius=8)
+            disabled_signup_text = self.font_medium.render("SIGNED UP", True, LIGHT_GREY)
             disabled_signup_rect = disabled_signup_text.get_rect(center=self.signup_button.center)
             self.screen.blit(disabled_signup_text, disabled_signup_rect)
 
@@ -332,7 +331,7 @@ class SignUpEveryLikeGame:
                 button_color = (180, 20, 40)
 
             pygame.draw.rect(self.screen, button_color, like_button_animated, border_radius=8)
-            pygame.draw.rect(self.screen, BLACK, like_button_animated, 2, border_radius=8)
+            pygame.draw.rect(self.screen, WHITE, like_button_animated, 2, border_radius=8)
 
             like_text = self.font_medium.render("LIKE (+0.2)", True, WHITE)
             like_rect = like_text.get_rect(center=like_button_animated.center)
